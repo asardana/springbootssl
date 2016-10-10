@@ -15,7 +15,7 @@ public class ClientController {
 	@GetMapping(value = "/hellotest")
 	public String testHello() {
 
-		System.out.println("Connectig to secure site");
+		System.out.println("Connecting to secure site");
 		
 		HttpsURLConnection.setDefaultHostnameVerifier ((hostname, session) -> true);
 		
