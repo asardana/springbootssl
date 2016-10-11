@@ -4,27 +4,28 @@ This repository contains 2 spring boot projects to test mutual authentication (2
 ```
 Keytool Commands
 
-1) Generate a Key and self signed certificate(.keystore file)
+1) Generate server key and self signed server certificate
 
-keytool.exe -genkey -alias tomcat -keyalg RSA
+keytool -genkey -alias serverkey -keystore C:\Users\Aman\STSProj\AppSecurity\serverkeystore.p12 -keyalg RSA -storetype PKCS12
 
-2) List the content of a keystore
+2) Generate client key and self signed client certificate
 
-keytool -list -v -keystore c:\users\aman\.keystore
+keytool -genkey -alias clientkey -keystore C:\Users\Aman\STSProj\AppSecurity\clientkeystore.p12 -keyalg RSA -storetype PKCS12
 
-3)  Export the certificate from an existing keystore
+3) Export the server certificate
 
-keytool -export -alias tomcat -file c:\users\aman\tomcat.cer -keystore c:\users\aman\.keystore
+keytool -export -alias serverkey -file C:\Users\Aman\STSProj\AppSecurity\servercert.cer -keystore C:\Users\Aman\STSProj\AppSecurity\serverkeystore.p12
 
-4)  Import the existing key from JKS keystore to PKCS12 keystore (JKS -> PKCS12)
+4) Export the client certificate
 
-keytool -v -importkeystore -srckeystore C:\Users\Aman\STSProj\AppSecurity\truststore.jks -srcstoretype JKS -srcalias tomcatclient -destkeystore C:\Users\Aman\STSProj\AppSecurity\truststore.p12 -deststoretype PKCS12 -destalias tomcatclient
+keytool -export -alias clientkey -file C:\Users\Aman\STSProj\AppSecurity\clientcert.cer -keystore C:\Users\Aman\STSProj\AppSecurity\clientkeystore.p12
 
-5) Import the certificate to a PKCS12 trust store 
+5) Import the server certificate into client truststore
 
-keytool -importcert -file c:\users\aman\tomcat.cer -keystore C:\Users\Aman\STSProj\AppSecurity\truststore.p12  -alias "tomcatclient"
+keytool -importcert -file C:\Users\Aman\STSProj\AppSecurity\servercert.cer -keystore C:\Users\Aman\STSProj\AppSecurity\clienttruststore.p12 -alias servercert
 
-6) Generate a key and certificate in PKCS12 format
+6) Import the client certificate into server truststore
 
-keytool -genkey -alias clientcert -keystore C:\Users\Aman\STSProj\AppSecurity\clientkeystore.p12 -keyalg RSA -keysize 2048 -storetype PKCS12
+keytool -importcert -file C:\Users\Aman\STSProj\AppSecurity\clientcert.cer -keystore C:\Users\Aman\STSProj\AppSecurity\servertruststore.p12 -alias clientcert
+
 ```
