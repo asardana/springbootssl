@@ -11,7 +11,7 @@ public class SecureAppClientApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SecureAppClientApplication.class, args);
-		System.out.println("Connectig to secure site");
+		System.out.println("Connecting to secure site");
 		
 		HttpsURLConnection.setDefaultHostnameVerifier ((hostname, session) -> true);
 		
