@@ -1,6 +1,6 @@
 # springbootssl
 Contains spring boot projects to test mutual authentication
-
+```
 Keytool Commands
 
 1) Generate a Key and self signed certificate(.keystore file)
@@ -26,3 +26,4 @@ keytool -importcert -file c:\users\aman\tomcat.cer -keystore C:\Users\Aman\STSPr
 6) Generate a key and certificate in PKCS12 format
 
 keytool -genkey -alias clientcert -keystore C:\Users\Aman\STSProj\AppSecurity\clientkeystore.p12 -keyalg RSA -keysize 2048 -storetype PKCS12
+```
