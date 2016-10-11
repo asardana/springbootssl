@@ -1,6 +1,6 @@
 # springbootssl
 
-This repository contains 2 spring boot projects to test mutual authentication (2 way SSL)
+This repository contains 2 spring boot projects to test mutual authentication (2 way)
 ```
 Keytool Commands
 
