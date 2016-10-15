@@ -15,6 +15,11 @@ public class SecureAppClientApplication {
 		
 		HttpsURLConnection.setDefaultHostnameVerifier ((hostname, session) -> true);
 		
+		System.setProperty("javax.net.ssl.keyStore", "C:\\Users\\Aman\\STSProj\\AppSecurity\\clientkeystore.p12");
+		System.setProperty("javax.net.ssl.keyStorePassword", "client");
+		System.setProperty("javax.net.ssl.trustStore", "C:\\Users\\Aman\\STSProj\\AppSecurity\\clienttruststore.p12");
+		System.setProperty("javax.net.ssl.trustStorePassword", "client");
+		
 		RestTemplate restTemp = new RestTemplate();
 		
 		String greetings = restTemp.getForObject("https://localhost:8443/SecureAppServer/test/security/hello/aman123", String.class);
